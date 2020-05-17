@@ -69,13 +69,13 @@ app.get('/weather', (req, res) => {
 
 
 
-// app.get('/help/*', (req, res) => {
-//     res.render('404Page', {
-//         errorMessage: 'Help article does not exist',
-//         title: '404 Page',
-//         name: 'Vishist Dura'
-//     })
-// })
+app.get('/help/*', (req, res) => {
+    res.render('404Page', {
+        errorMessage: 'Help article does not exist',
+        title: '404 Page',
+        name: 'Vishist Dura'
+    })
+})
 
 app.get('*', (req, res) => {
     res.render('404page', {
