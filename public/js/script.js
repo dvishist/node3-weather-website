@@ -24,7 +24,7 @@ weatherForm.addEventListener('submit', (e) => {
                 weatherImg.src = data.forecast.icon
                 messageTitle.textContent = data.location
                 locationTime.textContent = 'Local Time: ' + data.forecast.time
-                messageBody.textContent = `${data.forecast.weather}, The temperature is ${data.forecast.temperature} degrees with a ${data.forecast.precip}mm forecasted rainfall.`
+                messageBody.textContent = `${data.forecast.weather}, The temperature is ${data.forecast.temperature} degrees and humidity is ${data.forecast.humidity} with a ${data.forecast.precip}mm forecasted rainfall.`
             }
         })
     })
