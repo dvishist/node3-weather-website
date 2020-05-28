@@ -12,15 +12,27 @@ const forecast = (latitude, longitude, location, callback) => {
 		} else if (body.error) {
 			callback('Cannot find location of the coordinates', undefined)
 		} else {
-			callback(undefined, {
-				location,
-				time: body.location.localtime,
-				weather: body.current.weather_descriptions[0],
-				temperature: body.current.temperature,
-				precip: body.current.precip,
-				humidity: body.current.humidity,
-				icon: body.current.weather_icons[0]
-			})
+			if (location) {
+				callback(undefined, {
+					location,
+					time: body.location.localtime,
+					weather: body.current.weather_descriptions[0],
+					temperature: body.current.temperature,
+					precip: body.current.precip,
+					humidity: body.current.humidity,
+					icon: body.current.weather_icons[0]
+				})
+			} else {
+				callback(undefined, {
+					location: `${body.location.name}, ${body.location.region}, ${body.location.country}`,
+					time: body.location.localtime,
+					weather: body.current.weather_descriptions[0],
+					temperature: body.current.temperature,
+					precip: body.current.precip,
+					humidity: body.current.humidity,
+					icon: body.current.weather_icons[0]
+				})
+			}
 		}
 	})
 }
