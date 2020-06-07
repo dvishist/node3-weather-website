@@ -9,6 +9,11 @@ const resultDiv = document.querySelector('.result')
 document.getElementById('share-location').addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
+            resultDiv.hidden = false;
+            messageBody.textContent = "Loading..."
+            weatherImg.src = ''
+            locationTime.textContent = ''
+            messageTitle.textContent = ''
             fetch(`/forecast?lat=${String(pos.coords.latitude)}&lon=${String(pos.coords.longitude)}`)
                 .then(response => {
                     response.json().then(data => {
